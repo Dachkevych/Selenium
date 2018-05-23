@@ -15,7 +15,6 @@ public class Checker {
     private WebElement resultCount;
 
     public void verifyTagName(final String tagName, WebDriver driver) {
-//        Thread.sleep(3000);
         lists = driver.findElements(By.xpath("//div[@class='col-8 pr-3']"));
         int countTag = ((int) lists.stream().filter(el -> el.getText().contains(tagName)).count());
         System.out.println("Result verify tag: " + countTag + " from " + lists.size() + " tags contains tag - " + tagName);
