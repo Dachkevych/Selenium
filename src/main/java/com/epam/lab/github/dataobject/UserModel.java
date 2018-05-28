@@ -9,10 +9,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class UserModel {
 
-    @XmlElement(name = "login")
     private String login;
-    @XmlElement(name = "password")
     private String password;
+
+    public UserModel(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
+    public UserModel() {
+    }
 
     public String getLogin() {
         return login;

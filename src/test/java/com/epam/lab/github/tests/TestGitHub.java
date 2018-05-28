@@ -4,36 +4,30 @@ import com.epam.lab.github.bo.GithubLoginPageBO;
 import com.epam.lab.github.bo.GithubSearchPageBO;
 import com.epam.lab.github.dataobject.UserModel;
 import com.epam.lab.utils.DriverManager;
-import com.epam.lab.utils.JAXBParserGithub;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.io.File;
 
 import static com.epam.lab.utils.ConfigProperties.getTestProperty;
 import static com.epam.lab.utils.Constants.*;
 
 public class TestGitHub {
 
-    private GithubSearchPageBO githubSearchPageBO;
-    private GithubLoginPageBO githubLoginPageBO;
-    private UserModel model;
-
-    public TestGitHub() {
-        githubSearchPageBO = new GithubSearchPageBO();
-        githubLoginPageBO = new GithubLoginPageBO();
+    @DataProvider(parallel = true)
+    public static Object[][] users() {
+        return new Object[][]{
+                {new UserModel(getTestProperty("email1"), getTestProperty("password1"))},
+                {new UserModel(getTestProperty("email2"), getTestProperty("password2"))},
+                {new UserModel(getTestProperty("email3"), getTestProperty("password3"))},
+                {new UserModel(getTestProperty("email1"), getTestProperty("password3"))},
+                {new UserModel(getTestProperty("email3"), getTestProperty("password3"))}};
     }
 
-    @BeforeTest
-    public void beforeClass() {
-        model = new JAXBParserGithub().readXml(new File(getTestProperty("linkXMLGithub")));
-        DriverManager.getDriver().get(getTestProperty("linkGithub"));
-    }
-
-    @Test
-    public void findAndVerifyTagTets() {
-        githubLoginPageBO.login(model.getLogin(), model.getPassword());
+    @Test(dataProvider = "users")
+    public void findAndVerifyTagTets(UserModel userModel) {
+        GithubSearchPageBO githubSearchPageBO = new GithubSearchPageBO();
+        GithubLoginPageBO githubLoginPageBO = new GithubLoginPageBO();
+        githubLoginPageBO.login(userModel.getLogin(), userModel.getPassword());
         githubSearchPageBO.findProjectsByName(SELENIUM_JAVA);
         githubSearchPageBO.changeSort();
         githubSearchPageBO.verifyTagName(SELENIUM);
@@ -41,7 +35,7 @@ public class TestGitHub {
         githubSearchPageBO.verifyTagName(SPRING);
     }
 
-    @AfterTest
+    @AfterMethod
     public void kill() {
         DriverManager.removeDriver();
     }

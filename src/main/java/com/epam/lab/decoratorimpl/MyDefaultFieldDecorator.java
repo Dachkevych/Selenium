@@ -22,7 +22,6 @@ public class MyDefaultFieldDecorator extends DefaultFieldDecorator {
 
     @Override
     public Object decorate(ClassLoader loader, Field field) {
-
         if (PageElement.class.isAssignableFrom(field.getType())) {
 
             PageElement pageElement = new PageElement((WebElement) super.decorate(loader, field));
@@ -42,6 +41,19 @@ public class MyDefaultFieldDecorator extends DefaultFieldDecorator {
 
             return super.decorate(loader, field);
         }
+    }
+
+    private Class<?> decoratableClass(Field field) {
+
+        Class<?> clazz = field.getType();
+
+        try {
+            clazz.getConstructor(WebElement.class);
+        } catch (Exception e) {
+            return null;
+        }
+
+        return clazz;
     }
 
     private List<PageElement> proxyForPageElementList(ClassLoader loader, ElementLocator locator) {

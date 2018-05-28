@@ -25,5 +25,6 @@ com\epam\lab\github\pages\LoginPageGithub.class
 com\epam\lab\github\pages\SearchPageGithub.class
 com\epam\lab\github\dataobject\Users.class
 com\epam\lab\gmail\pages\MainPageGmail.class
+com\epam\lab\utils\DriverManager$1.class
 com\epam\lab\decorator\Name.class
 com\epam\lab\decoratorimpl\MyDefaultFieldDecorator.class
