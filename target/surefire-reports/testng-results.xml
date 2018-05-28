@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2018-05-28T19:27:29Z" name="All Test Suite" finished-at="2018-05-28T19:28:56Z" duration-ms="86831">
+    <groups>
+    </groups>
+    <test started-at="2018-05-28T19:27:29Z" name="test1" finished-at="2018-05-28T19:27:54Z" duration-ms="24981">
+      <class name="com.epam.lab.github.tests.TestGitHub">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.epam.lab.github.tests.TestGitHub@72ccd81a]" started-at="2018-05-28T22:27:29Z" name="beforeClass" finished-at="2018-05-28T22:27:38Z" duration-ms="8813" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method signature="findAndVerifyTagTets()[pri:0, instance:com.epam.lab.github.tests.TestGitHub@72ccd81a]" started-at="2018-05-28T22:27:38Z" name="findAndVerifyTagTets" finished-at="2018-05-28T22:27:53Z" duration-ms="15411" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- findAndVerifyTagTets -->
+        <test-method is-config="true" signature="kill()[pri:0, instance:com.epam.lab.github.tests.TestGitHub@72ccd81a]" started-at="2018-05-28T22:27:53Z" name="kill" finished-at="2018-05-28T22:27:54Z" duration-ms="715" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- kill -->
+      </class> <!-- com.epam.lab.github.tests.TestGitHub -->
+    </test> <!-- test1 -->
+    <test started-at="2018-05-28T19:27:54Z" name="test2" finished-at="2018-05-28T19:28:56Z" duration-ms="61553">
+      <class name="com.epam.lab.gmail.tests.TestGmail">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.epam.lab.gmail.tests.TestGmail@389adf1d]" started-at="2018-05-28T22:27:54Z" name="beforeClass" finished-at="2018-05-28T22:28:10Z" duration-ms="15574" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method signature="createAndSendMessage()[pri:0, instance:com.epam.lab.gmail.tests.TestGmail@389adf1d]" started-at="2018-05-28T22:28:10Z" name="createAndSendMessage" finished-at="2018-05-28T22:28:54Z" duration-ms="44500" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createAndSendMessage -->
+        <test-method is-config="true" signature="close()[pri:0, instance:com.epam.lab.gmail.tests.TestGmail@389adf1d]" started-at="2018-05-28T22:28:54Z" name="close" finished-at="2018-05-28T22:28:56Z" duration-ms="1477" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- com.epam.lab.gmail.tests.TestGmail -->
+    </test> <!-- test2 -->
+  </suite> <!-- All Test Suite -->
+</testng-results>

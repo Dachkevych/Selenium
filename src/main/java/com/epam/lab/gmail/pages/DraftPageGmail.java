@@ -1,30 +1,29 @@
 package com.epam.lab.gmail.pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.epam.lab.PageObject;
+import com.epam.lab.decorator.Name;
+import com.epam.lab.decorator.PageElement;
+import com.epam.lab.utils.DriverManager;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class DraftPageGmail {
+public class DraftPageGmail extends PageObject {
 
-    private WebDriver driver;
-
+    @Name("Last draft message")
     @FindBy(xpath = "//tr[1]/td[4]/div[2]/font[1]")
-    private WebElement lastDraft;
+    private PageElement lastDraft;
 
+    @Name("Sent message")
     @FindBy(xpath = "//td[1]/div/div[2 and @tabindex='1' and @role='button']")
-    private WebElement sendDraftMessage;
-
-    public DraftPageGmail(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
+    private PageElement sendDraftMessage;
 
     public void clickLastDraft() {
+        DriverManager.newWait().until(ExpectedConditions.visibilityOf(lastDraft));
         lastDraft.click();
     }
 
     public void clickSendDraft() {
+        DriverManager.newWait().until(ExpectedConditions.visibilityOf(sendDraftMessage));
         sendDraftMessage.click();
     }
 }

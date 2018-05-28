@@ -1,32 +1,48 @@
 package com.epam.lab.github.tests;
 
-import com.epam.lab.github.decorator.GitDecorator;
-import org.testng.annotations.*;
+import com.epam.lab.github.bo.GithubLoginPageBO;
+import com.epam.lab.github.bo.GithubSearchPageBO;
+import com.epam.lab.github.dataobject.UserModel;
+import com.epam.lab.utils.DriverManager;
+import com.epam.lab.utils.JAXBParserGithub;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
+import java.io.File;
+
+import static com.epam.lab.utils.ConfigProperties.getTestProperty;
 import static com.epam.lab.utils.Constants.*;
 
 public class TestGitHub {
 
-    private GitDecorator decorator;
+    private GithubSearchPageBO githubSearchPageBO;
+    private GithubLoginPageBO githubLoginPageBO;
+    private UserModel model;
 
-    @BeforeClass
+    public TestGitHub() {
+        githubSearchPageBO = new GithubSearchPageBO();
+        githubLoginPageBO = new GithubLoginPageBO();
+    }
+
+    @BeforeTest
     public void beforeClass() {
-        decorator = new GitDecorator();
-        decorator.createDriver();
+        model = new JAXBParserGithub().readXml(new File(getTestProperty("linkXMLGithub")));
+        DriverManager.getDriver().get(getTestProperty("linkGithub"));
     }
 
     @Test
     public void findAndVerifyTagTets() {
-        decorator.signInIntoGithub();
-        decorator.findTittleName(SELENIUM_JAVA);
-        decorator.verifyTagNameAndPrintResult(SELENIUM);
-        decorator.changeSort(FEWEST_STARS_SORT);
-        decorator.findTittleName(SPRING_JAVA);
-        decorator.verifyTagNameAndPrintResult(SPRING);
+        githubLoginPageBO.login(model.getLogin(), model.getPassword());
+        githubSearchPageBO.findProjectsByName(SELENIUM_JAVA);
+        githubSearchPageBO.changeSort();
+        githubSearchPageBO.verifyTagName(SELENIUM);
+        githubSearchPageBO.findProjectsByName(SPRING_JAVA);
+        githubSearchPageBO.verifyTagName(SPRING);
     }
 
-    @AfterClass
-    public void close() {
-        decorator.close();
+    @AfterTest
+    public void kill() {
+        DriverManager.removeDriver();
     }
 }

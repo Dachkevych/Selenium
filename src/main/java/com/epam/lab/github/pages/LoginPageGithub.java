@@ -1,43 +1,34 @@
 package com.epam.lab.github.pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.epam.lab.PageObject;
+import com.epam.lab.decorator.Name;
+import com.epam.lab.decorator.PageElement;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class LoginPageGithub {
+public class LoginPageGithub extends PageObject {
 
-    private WebDriver driver;
-
+    @Name("SignIn")
     @FindBy(xpath = "//a[@href='/login']")
-    private WebElement signIn;
+    private PageElement signIn;
 
+    @Name("Login")
     @FindBy(id = "login_field")
-    private WebElement login;
+    private PageElement login;
 
+    @Name("Password")
     @FindBy(id = "password")
-    private WebElement password;
+    private PageElement password;
 
-    @FindBy(name = "commit")
-    private WebElement submitBtn;
-
-    public LoginPageGithub(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
-
-    public void clickBtn() {
-        submitBtn.click();
-    }
-
-    public void clickSignIn() {
+    public void clickSignInBtn() {
         signIn.click();
     }
 
-    public void signIn(String email, String pass) {
-        clickSignIn();
-        login.sendKeys(email);
-        password.sendKeys(pass);
-        clickBtn();
+    public void setLogin(String email) {
+        login.sendKeys(email, Keys.ENTER);
+    }
+
+    public void setPassword(String pass) {
+        password.sendKeys(pass, Keys.ENTER);
     }
 }

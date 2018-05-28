@@ -1,27 +1,25 @@
 package com.epam.lab.github.pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.epam.lab.PageObject;
+import com.epam.lab.decorator.Name;
+import com.epam.lab.decorator.PageElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class SearchPageGithub {
+public class SearchPageGithub extends PageObject {
 
-    private WebDriver driver;
+    @Name("Sort type button")
+    @FindBy(className = "js-select-button")
+    private PageElement sortType;
 
-    @FindBy(className = "select-menu-item js-navigation-open js-navigation-item navigation-focus")
-    private WebElement sortType;
+    @Name("Fewest-Stars")
+    @FindBy(css = ".select-menu-list>a:nth-child(3)")
+    private PageElement sortFewestStars;
 
-    @FindBy(xpath = "//button[@class='btn btn-sm select-menu-button js-menu-target']")
-    private WebElement sortBtn;
-
-    public SearchPageGithub(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+    public void clickSortBtn() {
+        sortType.click();
     }
 
-    public void clickSortBtn(WebElement sortBy) {
-        sortBtn.click();
-//        sortBy.click();
+    public void changeSort() {
+        sortFewestStars.click();
     }
 }

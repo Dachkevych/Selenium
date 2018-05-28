@@ -1,32 +1,33 @@
 package com.epam.lab.gmail.pages;
 
-import org.openqa.selenium.WebDriver;
+import com.epam.lab.PageObject;
+import com.epam.lab.decorator.Name;
+import com.epam.lab.decorator.PageElement;
+import com.epam.lab.utils.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class MessagePageGmail {
+public class MessagePageGmail extends PageObject {
 
-    public WebDriver driver;
-
+    @Name("Reciever message")
     @FindBy(name = "to")
-    private WebElement reciever;
+    private PageElement reciever;
 
+    @Name("Subject message")
     @FindBy(name = "subjectbox")
-    private WebElement subject;
+    private PageElement subject;
 
+    @Name("Text message")
     @FindBy(xpath = "//div[@role='textbox']")
-    private WebElement text;
+    private PageElement text;
 
+    @Name("Close message")
     @FindBy(xpath = "//div[@role='dialog']//img[3]")
-    private WebElement closeMessage;
-
-    public MessagePageGmail(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
+    private PageElement closeMessage;
 
     public void writeMessage(String to, String subj, String str) {
+        DriverManager.newWait().until(ExpectedConditions.visibilityOf(reciever));
         reciever.sendKeys(to);
         subject.sendKeys(subj);
         text.sendKeys(str);

@@ -1,37 +1,38 @@
 package com.epam.lab.gmail.pages;
 
+import com.epam.lab.PageObject;
+import com.epam.lab.decorator.Name;
+import com.epam.lab.decorator.PageElement;
+import com.epam.lab.utils.DriverManager;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class LoginPageGmail {
+public class LoginPageGmail extends PageObject {
 
-    public WebDriver driver;
-
+    @Name("Login")
     @FindBy(name = "identifier")
-    private WebElement loginInput;
+    private PageElement loginInput;
 
+    @Name("Password")
     @FindBy(name = "password")
-    private WebElement passwordInput;
+    private PageElement passwordInput;
 
+    @Name("Submit")
     @FindBy(id ="identifierNext")
-    private WebElement nextBtn;
+    private PageElement nextBtn;
 
+    @Name("Submit Logi and Password")
     @FindBy(id = "passwordNext")
-    private WebElement submitLogin;
+    private PageElement submitLogin;
 
-    public LoginPageGmail(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
-
-    public MainPageGmail login(String login, String password) {
-        loginInput.sendKeys(login);
-        clickNextBtn();
-        passwordInput.sendKeys(password);
-        clickLoginButton();
-        return new MainPageGmail(driver);
+    public void logIn(String login, String password) {
+        loginInput.sendKeys(login, Keys.ENTER);
+        DriverManager.newWait().until(ExpectedConditions.visibilityOf(passwordInput));
+        passwordInput.sendKeys(password, Keys.ENTER);
     }
 
     public void clickLoginButton() {
