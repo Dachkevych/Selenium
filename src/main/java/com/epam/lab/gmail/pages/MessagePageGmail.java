@@ -4,10 +4,8 @@ import com.epam.lab.PageObject;
 import com.epam.lab.decorator.Name;
 import com.epam.lab.decorator.PageElement;
 import com.epam.lab.utils.DriverManager;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MessagePageGmail extends PageObject {
 

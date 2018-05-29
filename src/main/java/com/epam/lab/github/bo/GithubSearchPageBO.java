@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 
 public class GithubSearchPageBO {
 
-    MainPageGithub mainPageGithub = new MainPageGithub();
-    SearchPageGithub searchPageGithub = new SearchPageGithub();
+   private MainPageGithub mainPageGithub = new MainPageGithub();
+   private SearchPageGithub searchPageGithub = new SearchPageGithub();
 
     public void findProjectsByName(String name) {
         mainPageGithub.inputSearch(name);
@@ -16,10 +16,6 @@ public class GithubSearchPageBO {
     public void changeSort() {
         searchPageGithub.clickSortBtn();
         searchPageGithub.changeSort();
-    }
-
-    public void countTagName(String tag) {
-        verifyTagName(tag);
     }
 
     public void verifyTagName(final String tagName) {
@@ -36,5 +32,13 @@ public class GithubSearchPageBO {
 
     public void getResultCount() {
         System.out.println(mainPageGithub.getAmountSearchResult().getText());
+    }
+
+    public boolean checkChangeSortSuccess() {
+        return searchPageGithub.checkChangeSortSuccess();
+    }
+
+    public boolean checkSiginSuccess(){
+        return mainPageGithub.checkSiginSuccess();
     }
 }

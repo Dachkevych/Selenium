@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPageGithub extends PageObject {
 
+    private Boolean statusLoad;
     @Name("SignIn")
     @FindBy(xpath = "//a[@href='/login']")
     private PageElement signIn;
@@ -25,7 +26,7 @@ public class LoginPageGithub extends PageObject {
     }
 
     public void setLogin(String email) {
-        login.sendKeys(email, Keys.ENTER);
+        login.sendKeys(email);
     }
 
     public void setPassword(String pass) {

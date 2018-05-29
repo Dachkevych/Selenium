@@ -58,7 +58,6 @@ public class MyDefaultFieldDecorator extends DefaultFieldDecorator {
 
     private List<PageElement> proxyForPageElementList(ClassLoader loader, ElementLocator locator) {
         InvocationHandler handler = new PageElementListHandler(locator);
-
         List<PageElement> proxy;
         proxy = (List<PageElement>) Proxy.newProxyInstance(
                 loader, new Class[]{List.class}, handler);

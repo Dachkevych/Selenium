@@ -31,13 +31,8 @@ public class MainPageGmail extends PageObject {
         draftBtn.click();
     }
 
-    public int getDraftsCount() {
-        String count = draftBtn.getText().replaceAll("[^-?0-9]+", "").trim();
-        return Integer.parseInt(count);  //return count draft message
-    }
-
     public boolean checkLoadInbox() {
-        if ((new WebDriverWait(DriverManager.getDriver(), 60)).until(ExpectedConditions.elementToBeClickable(composeBtn)) != null) {
+        if ((new WebDriverWait(DriverManager.getDriver(), 20)).until(ExpectedConditions.elementToBeClickable(composeBtn)) != null) {
             statusLoad = true;
         }
         return statusLoad;

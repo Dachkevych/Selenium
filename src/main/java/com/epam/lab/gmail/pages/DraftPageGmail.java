@@ -35,13 +35,10 @@ public class DraftPageGmail extends PageObject {
     }
 
     public boolean checkSentMessage() {
-        if ((new WebDriverWait(DriverManager.getDriver(), 15)).until(ExpectedConditions.elementToBeClickable(sendDraftMessage)) != null) {
+        if ((new WebDriverWait(DriverManager.getDriver(), 15))
+                .until(ExpectedConditions.elementToBeClickable(sendDraftMessage)) != null) {
             ifSentMessage = true;
         }
         return ifSentMessage;
-    }
-
-    public boolean checkLoadDrafts() {
-        return new WebDriverWait(DriverManager.getDriver(), 15).until(ExpectedConditions.textToBePresentInElementValue(searchInput, "in:draft "));
     }
 }

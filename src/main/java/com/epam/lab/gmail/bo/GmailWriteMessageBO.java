@@ -30,8 +30,4 @@ public class GmailWriteMessageBO {
     public boolean checkSentMessage() {
         return draftPageGmail.checkSentMessage();
     }
-
-    public boolean checkLoadDrafts() {
-        return draftPageGmail.checkLoadDrafts();
-    }
 }

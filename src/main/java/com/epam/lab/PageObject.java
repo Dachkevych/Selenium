@@ -8,7 +8,6 @@ import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 public abstract class PageObject {
 
     public PageObject() {
-
         PageFactory.initElements(
                 new MyDefaultFieldDecorator(
                         new DefaultElementLocatorFactory(DriverManager.getDriver())

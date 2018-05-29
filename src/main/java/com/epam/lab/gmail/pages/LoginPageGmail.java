@@ -35,12 +35,4 @@ public class LoginPageGmail extends PageObject {
         DriverManager.newWait().until(ExpectedConditions.visibilityOf(passwordInput));
         passwordInput.sendKeys(password, Keys.ENTER);
     }
-
-    public void clickLoginButton() {
-        submitLogin.click();
-    }
-
-    public void clickNextBtn(){
-        nextBtn.click();
-    }
 }

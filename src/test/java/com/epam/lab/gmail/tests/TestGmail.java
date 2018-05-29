@@ -1,13 +1,11 @@
 package com.epam.lab.gmail.tests;
 
-//import com.epam.lab.gmail.decorator.GmailDecorator;
-
 import com.epam.lab.gmail.bo.GmailLoginPageBO;
 import com.epam.lab.gmail.bo.GmailWriteMessageBO;
 import com.epam.lab.gmail.dataobject.UserModelGmail;
 import com.epam.lab.gmail.utils.TestProviderGmail;
 import com.epam.lab.utils.DriverManager;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import static com.epam.lab.utils.ConfigProperties.getTestProperty;
@@ -22,12 +20,13 @@ public class TestGmail {
         GmailWriteMessageBO gmailWriteMessageBO = new GmailWriteMessageBO();
         gmailLoginPageBO.login(userModelGmail.getLogin(), userModelGmail.getPassword());
         assertTrue(gmailLoginPageBO.checkLoginSuccess());
+
         gmailWriteMessageBO.writeMessage(userModelGmail.getReceiver(), userModelGmail.getSubject(), userModelGmail.getText());
         gmailWriteMessageBO.sendMessage();
         assertTrue(gmailWriteMessageBO.checkSentMessage());
     }
 
-    @AfterTest
+    @AfterMethod
     public void close() {
         DriverManager.removeDriver();
     }

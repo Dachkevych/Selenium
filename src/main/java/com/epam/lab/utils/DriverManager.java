@@ -18,8 +18,7 @@ public class DriverManager {
         return instance;
     });
 
-    private DriverManager() {
-    }
+    private DriverManager() {}
 
     public static WebDriver getDriver() {
         return driver.get();

@@ -11,13 +11,9 @@ import java.util.List;
 public class UsersGmail {
 
     @XmlElement(name = "user")
-    private List<UserModelGmail> userModelGmails  = null;
+    private List<UserModelGmail> userModelGmails = null;
 
     public List<UserModelGmail> getUserModelGmails() {
         return userModelGmails;
-    }
-
-    public void setUserModelGmails(List<UserModelGmail> userModelGmails) {
-        this.userModelGmails = userModelGmails;
     }
 }
