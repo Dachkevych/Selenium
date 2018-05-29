@@ -1,6 +1,7 @@
 package com.epam.lab.github.decorator;
 
 import com.epam.lab.github.dataobject.DataObjectGithub;
+import com.epam.lab.github.dataobject.UserModel;
 import com.epam.lab.github.pages.LoginPageGithub;
 import com.epam.lab.github.pages.MainPageGithub;
 import com.epam.lab.github.pages.SearchPageGithub;
@@ -21,7 +22,7 @@ public class GitDecorator {
     private MainPageGithub mainPageGithub;
     private SearchPageGithub searchPageGithub;
     private WebDriver driver;
-    private DataObjectGithub data;
+    private UserModel data;
     private WebElement element;
     private Checker checker = new Checker();
 
@@ -31,12 +32,12 @@ public class GitDecorator {
     }
 
     public void signInIntoGithub() {
-        loginPageGithub = new LoginPageGithub(driver);
+        loginPageGithub = new LoginPageGithub();
         loginPageGithub.signIn(data.getLogin(), data.getPassword());
     }
 
     public void findTittleName(String tittle) {
-        mainPageGithub = new MainPageGithub(driver);
+        mainPageGithub = new MainPageGithub();
         mainPageGithub.inputSearch(tittle);
     }
 
@@ -46,8 +47,8 @@ public class GitDecorator {
     }
 
     public void changeSort(String str) {
-        searchPageGithub = new SearchPageGithub(driver);
-        searchPageGithub.clickSortBtn(element);
+        searchPageGithub = new SearchPageGithub();
+        searchPageGithub.clickSortBtn();
         element = driver.findElement(By.xpath(str));
         element.click();
     }

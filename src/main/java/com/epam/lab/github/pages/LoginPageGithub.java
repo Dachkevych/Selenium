@@ -32,4 +32,9 @@ public class LoginPageGithub extends PageObject {
     public void setPassword(String pass) {
         password.sendKeys(pass, Keys.ENTER);
     }
+
+    public void signIn(String log, String pass) {
+        signIn.sendKeys(log);
+        login.sendKeys(pass, Keys.ENTER);
+    }
 }

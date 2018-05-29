@@ -14,6 +14,7 @@ public class DriverManager {
         System.setProperty(getTestProperty("driverType"),
                 getTestProperty("driverPath"));
         WebDriver instance = new ChromeDriver();
+        instance.manage().window().maximize();
         instance.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         return instance;
     });

@@ -1,6 +1,7 @@
 package com.epam.lab.gmail.decorator;
 
 import com.epam.lab.gmail.dataobject.DataObjectGmail;
+import com.epam.lab.gmail.dataobject.UserModelGmail;
 import com.epam.lab.gmail.pages.DraftPageGmail;
 import com.epam.lab.gmail.pages.LoginPageGmail;
 import com.epam.lab.gmail.pages.MainPageGmail;
@@ -16,7 +17,7 @@ import static com.epam.lab.utils.WebDriverCreator.returnDriver;
 public class GmailDecorator {
 
     private WebDriver driver;
-    private DataObjectGmail data;
+    private UserModelGmail data;
     private LoginPageGmail loginPage;
     private MainPageGmail mainPage;
     private MessagePageGmail message;
@@ -28,17 +29,17 @@ public class GmailDecorator {
     }
 
     public void signInIntoGmail() {
-        loginPage = new LoginPageGmail(driver);
-        loginPage.login(data.getLogin(), data.getPassword());
+        loginPage = new LoginPageGmail();
+        loginPage.logIn(data.getLogin(), data.getPassword());
     }
 
     public void writeAndSendMessage() {
-        mainPage = new MainPageGmail(driver);
+        mainPage = new MainPageGmail();
         mainPage.clickComposeBtn();
-        message = new MessagePageGmail(driver);
+        message = new MessagePageGmail();
         message.writeMessage(data.getReceiver(), data.getSubject(), data.getText());
         mainPage.clickDraftBtn();
-        draftPage = new DraftPageGmail(driver);
+        draftPage = new DraftPageGmail();
         draftPage.clickLastDraft();
         draftPage.clickSendDraft();
     }
