@@ -4,37 +4,27 @@ package com.epam.lab.gmail.tests;
 
 import com.epam.lab.gmail.bo.GmailLoginPageBO;
 import com.epam.lab.gmail.bo.GmailWriteMessageBO;
-import com.epam.lab.gmail.dataobject.DataObjectGmail;
+import com.epam.lab.gmail.dataobject.UserModelGmail;
+import com.epam.lab.gmail.utils.TestProviderGmail;
 import com.epam.lab.utils.DriverManager;
-import com.epam.lab.utils.JAXBParserGmail;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.io.File;
-
 import static com.epam.lab.utils.ConfigProperties.getTestProperty;
+import static org.testng.Assert.assertTrue;
 
 public class TestGmail {
 
-    private GmailLoginPageBO gmailLoginPageBO;
-    private GmailWriteMessageBO gmailWriteMessageBO;
-    private DataObjectGmail data;
-    private DriverManager driverManager;
-
-    @BeforeTest
-    public void beforeClass() {
-        gmailLoginPageBO = new GmailLoginPageBO();
-        gmailWriteMessageBO = new GmailWriteMessageBO();
-        data = new JAXBParserGmail().readXml(new File(getTestProperty("linkXMLGmail")));
+    @Test(dataProvider = "getUsersData", dataProviderClass = TestProviderGmail.class)
+    public void createAndSendMessage(UserModelGmail userModelGmail) {
         DriverManager.getDriver().get(getTestProperty("linkGmail"));
-    }
-
-    @Test
-    public void createAndSendMessage() {
-        gmailLoginPageBO.login(data.getLogin(), data.getPassword());
-        gmailWriteMessageBO.writeMessage(data.getReceiver(), data.getSubject(), data.getText());
+        GmailLoginPageBO gmailLoginPageBO = new GmailLoginPageBO();
+        GmailWriteMessageBO gmailWriteMessageBO = new GmailWriteMessageBO();
+        gmailLoginPageBO.login(userModelGmail.getLogin(), userModelGmail.getPassword());
+        assertTrue(gmailLoginPageBO.checkLoginSuccess());
+        gmailWriteMessageBO.writeMessage(userModelGmail.getReceiver(), userModelGmail.getSubject(), userModelGmail.getText());
         gmailWriteMessageBO.sendMessage();
+        assertTrue(gmailWriteMessageBO.checkSentMessage());
     }
 
     @AfterTest

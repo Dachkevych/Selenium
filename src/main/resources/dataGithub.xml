@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<users>
+<usersGithub>
     <user>
         <login>taras_131@gmail.com</login>
         <password>taras131</password>
@@ -8,16 +8,16 @@
         <login>taras_131@gmail.com</login>
         <password>taras131</password>
     </user>
-    <user>
-        <login>taras_131@gmail.com</login>
-        <password>taras131</password>
-    </user>
-    <user>
-        <login>taras_131@gmail.com</login>
-        <password>taras131</password>
-    </user>
-    <user>
-        <login>taras_131@gmail.com</login>
-        <password>taras131</password>
-    </user>
-</users>
+    <!--<user>-->
+        <!--<login>taras_131@gmail.com</login>-->
+        <!--<password>taras131</password>-->
+    <!--</user>-->
+    <!--<user>-->
+        <!--<login>taras_131@gmail.com</login>-->
+        <!--<password>taras131</password>-->
+    <!--</user>-->
+    <!--<user>-->
+        <!--<login>taras_131@gmail.com</login>-->
+        <!--<password>taras131</password>-->
+    <!--</user>-->
+</usersGithub>

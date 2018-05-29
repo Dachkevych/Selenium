@@ -3,8 +3,6 @@ package com.epam.lab.gmail.bo;
 import com.epam.lab.gmail.pages.DraftPageGmail;
 import com.epam.lab.gmail.pages.MainPageGmail;
 import com.epam.lab.gmail.pages.MessagePageGmail;
-import com.epam.lab.utils.DriverManager;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class GmailWriteMessageBO {
 
@@ -27,5 +25,13 @@ public class GmailWriteMessageBO {
     public void sendMessage() {
         draftPageGmail.clickLastDraft();
         draftPageGmail.clickSendDraft();
+    }
+
+    public boolean checkSentMessage() {
+        return draftPageGmail.checkSentMessage();
+    }
+
+    public boolean checkLoadDrafts() {
+        return draftPageGmail.checkLoadDrafts();
     }
 }

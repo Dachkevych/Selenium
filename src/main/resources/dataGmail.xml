@@ -1,7 +1,37 @@
-<dataObjectGmail>
-    <login>seleniumtest581@gmail.com</login>
-    <password>test2018</password>
-    <receiver>dachkevych13@gmail.com</receiver>
-    <subject>Some subject</subject>
-    <text>Some text</text>
-</dataObjectGmail>
+<usersGmail>
+    <user>
+        <login>seleniumtest581@gmail.com</login>
+        <password>test2018</password>
+        <receiver>dachkevych13@gmail.com</receiver>
+        <subject>Some subject</subject>
+        <text>Some text</text>
+    </user>
+    <user>
+        <login>seleniumtest581@gmail.com</login>
+        <password>test2018</password>
+        <receiver>dachkevych13@gmail.com</receiver>
+        <subject>Some subject</subject>
+        <text>Some text</text>
+    </user>
+    <!--<user>-->
+        <!--<login>seleniumtest581@gmail.com</login>-->
+        <!--<password>test2018</password>-->
+        <!--<receiver>dachkevych13@gmail.com</receiver>-->
+        <!--<subject>Some subject</subject>-->
+        <!--<text>Some text</text>-->
+    <!--</user>-->
+    <!--<user>-->
+        <!--<login>seleniumtest581@gmail.com</login>-->
+        <!--<password>test2018</password>-->
+        <!--<receiver>dachkevych13@gmail.com</receiver>-->
+        <!--<subject>Some subject</subject>-->
+        <!--<text>Some text</text>-->
+    <!--</user>-->
+    <!--<user>-->
+        <!--<login>seleniumtest581@gmail.com</login>-->
+        <!--<password>test2018</password>-->
+        <!--<receiver>dachkevych13@gmail.com</receiver>-->
+        <!--<subject>Some subject</subject>-->
+        <!--<text>Some text</text>-->
+    <!--</user>-->
+</usersGmail>

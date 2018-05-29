@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-
-<user>
-    <login>taras_131@gmail.com</login>
-    <password>taras131</password>
-</user>
+<usersGithub>
+    <user>
+        <login>taras_131@gmail.com</login>
+        <password>taras131</password>
+    </user>
+    <user>
+        <login>taras_131@gmail.com</login>
+        <password>taras131</password>
+    </user>
+    <!--<user>-->
+        <!--<login>taras_131@gmail.com</login>-->
+        <!--<password>taras131</password>-->
+    <!--</user>-->
+    <!--<user>-->
+        <!--<login>taras_131@gmail.com</login>-->
+        <!--<password>taras131</password>-->
+    <!--</user>-->
+    <!--<user>-->
+        <!--<login>taras_131@gmail.com</login>-->
+        <!--<password>taras131</password>-->
+    <!--</user>-->
+</usersGithub>
